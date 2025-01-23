@@ -45,32 +45,44 @@ Apply namespace.yml to create a namespace for the project:
 bash
 Copy
 Edit
-kubectl apply -f k8s/namespace.yml
+
+> kubectl apply -f k8s/namespace.yml
+
 MongoDB:
 
 Deploy MongoDB using the deployment and service files:
 bash
 Copy
 Edit
-kubectl apply -f k8s/mongo/mongo-deployment.yml /n
+
+kubectl apply -f k8s/mongo/mongo-deployment.yml 
+
 kubectl apply -f k8s/mongo/mongo-service.yml
+
 Backend:
 
 Deploy the backend using the deployment, service, and config files:
 bash
 Copy
 Edit
-kubectl apply -f k8s/backend/backend-deployment.yml /n
-kubectl apply -f k8s/backend/backend-service.yml /n
-kubectl apply -f k8s/backend/backend-config.yml /n
+
+kubectl apply -f k8s/backend/backend-deployment.yml 
+
+kubectl apply -f k8s/backend/backend-service.yml 
+
+kubectl apply -f k8s/backend/backend-config.yml 
+
 Frontend:
 
 Deploy the frontend using the deployment and service files:
 bash
 Copy
 Edit
-kubectl apply -f k8s/frontend/frontend-deployment.yml /n
-kubectl apply -f k8s/frontend/frontend-service.yml /n
+
+kubectl apply -f k8s/frontend/frontend-deployment.yml 
+
+kubectl apply -f k8s/frontend/frontend-service.yml 
+
 Pipeline Workflow
 The Jenkins pipeline automates the process of building Docker images and deploying them to Kubernetes. Here’s the high-level overview of the pipeline:
 
@@ -88,9 +100,13 @@ Deploy to Kubernetes:
 
 Applies Kubernetes manifests to deploy the application in Minikube.
 Key Environment Variables:
-DOCKER_HUB_CREDENTIALS: Jenkins credentials for Docker Hub login.
-DOCKER_HUB_REPO: Docker Hub repository for storing the images.
-KUBECONFIG: Path to the kubeconfig file for accessing the Kubernetes cluster.
+
+> DOCKER_HUB_CREDENTIALS: Jenkins credentials for Docker Hub login.
+
+> DOCKER_HUB_REPO: Docker Hub repository for storing the images.
+
+> KUBECONFIG: Path to the kubeconfig file for accessing the Kubernetes cluster.
+
 Steps to Deploy Locally
 Prerequisites:
 Install Docker, Minikube, and kubectl on your local machine.
@@ -101,36 +117,53 @@ Start Minikube:
 bash
 Copy
 Edit
-minikube start
+
+> minikube start
+
 Build Docker Images:
 
 bash
 Copy
 Edit
-docker build -t <docker-hub-repo-backend> ./backend /n
-docker build -t <docker-hub-repo-frontend> ./frontend /n
-docker build -t <docker-hub-repo-mongo> ./mongo /n
+
+> docker build -t <docker-hub-repo-backend> ./backend
+
+> docker build -t <docker-hub-repo-frontend> ./frontend 
+
+> docker build -t <docker-hub-repo-mongo> ./mongo 
 Push Images to Docker Hub:
 
 bash
 Copy
 Edit
-docker push <docker-hub-repo-backend> /n
-docker push <docker-hub-repo-frontend> /n
-docker push <docker-hub-repo-mongo> /n
+
+> docker push <docker-hub-repo-backend>
+
+> docker push <docker-hub-repo-frontend>
+
+> docker push <docker-hub-repo-mongo>
+
 Apply Kubernetes Manifests:
 
 bash
 Copy
 Edit
-kubectl apply -f k8s/namespace.yml /n
-kubectl apply -f k8s/mongo/mongo-deployment.yml /n
-kubectl apply -f k8s/mongo/mongo-service.yml /n
-kubectl apply -f k8s/backend/backend-deployment.yml /n
-kubectl apply -f k8s/backend/backend-service.yml /n
-kubectl apply -f k8s/backend/backend-config.yml /n
-kubectl apply -f k8s/frontend/frontend-deployment.yml /n
-kubectl apply -f k8s/frontend/frontend-service.yml /n
+
+> kubectl apply -f k8s/namespace.yml
+
+> kubectl apply -f k8s/mongo/mongo-deployment.yml
+
+> kubectl apply -f k8s/mongo/mongo-service.yml
+
+> kubectl apply -f k8s/backend/backend-deployment.yml
+
+> kubectl apply -f k8s/backend/backend-service.yml
+
+> kubectl apply -f k8s/backend/backend-config.yml
+
+> kubectl apply -f k8s/frontend/frontend-deployment.yml
+
+> kubectl apply -f k8s/frontend/frontend-service.yml 
 Access the Application:
 
 Use kubectl port-forward or minikube service to expose the frontend service.
