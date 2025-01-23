@@ -55,9 +55,9 @@ bash
 Copy
 Edit
 
-kubectl apply -f k8s/mongo/mongo-deployment.yml 
+> kubectl apply -f k8s/mongo/mongo-deployment.yml 
 
-kubectl apply -f k8s/mongo/mongo-service.yml
+> kubectl apply -f k8s/mongo/mongo-service.yml
 
 Backend:
 
@@ -66,11 +66,11 @@ bash
 Copy
 Edit
 
-kubectl apply -f k8s/backend/backend-deployment.yml 
+> kubectl apply -f k8s/backend/backend-deployment.yml 
 
-kubectl apply -f k8s/backend/backend-service.yml 
+> kubectl apply -f k8s/backend/backend-service.yml 
 
-kubectl apply -f k8s/backend/backend-config.yml 
+> kubectl apply -f k8s/backend/backend-config.yml 
 
 Frontend:
 
@@ -79,9 +79,9 @@ bash
 Copy
 Edit
 
-kubectl apply -f k8s/frontend/frontend-deployment.yml 
+> kubectl apply -f k8s/frontend/frontend-deployment.yml 
 
-kubectl apply -f k8s/frontend/frontend-service.yml 
+> kubectl apply -f k8s/frontend/frontend-service.yml 
 
 Pipeline Workflow
 The Jenkins pipeline automates the process of building Docker images and deploying them to Kubernetes. Here’s the high-level overview of the pipeline:
