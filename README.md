@@ -38,29 +38,6 @@ Deployments: Manages pods for the frontend, backend, and database.
 Services: Exposes pods for internal and external communication.
 ConfigMaps and Secrets: Stores environment variables and sensitive data.
 Kubernetes Deployment
-Directory Structure
-arduino
-Copy
-Edit
-labourHiringSystem/
-├── backend/
-│   └── Dockerfile
-├── frontend/
-│   └── Dockerfile
-├── mongo/
-│   └── Dockerfile
-├── k8s/
-│   ├── namespace.yml
-│   ├── backend/
-│   │   ├── backend-deployment.yml
-│   │   ├── backend-service.yml
-│   │   └── backend-config.yml
-│   ├── frontend/
-│   │   ├── frontend-deployment.yml
-│   │   ├── frontend-service.yml
-│   └── mongo/
-│       ├── mongo-deployment.yml
-│       ├── mongo-service.yml
 Steps:
 Namespace:
 
@@ -75,7 +52,7 @@ Deploy MongoDB using the deployment and service files:
 bash
 Copy
 Edit
-kubectl apply -f k8s/mongo/mongo-deployment.yml
+kubectl apply -f k8s/mongo/mongo-deployment.yml /n
 kubectl apply -f k8s/mongo/mongo-service.yml
 Backend:
 
