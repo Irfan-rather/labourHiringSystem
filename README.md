@@ -60,17 +60,17 @@ Deploy the backend using the deployment, service, and config files:
 bash
 Copy
 Edit
-kubectl apply -f k8s/backend/backend-deployment.yml
-kubectl apply -f k8s/backend/backend-service.yml
-kubectl apply -f k8s/backend/backend-config.yml
+kubectl apply -f k8s/backend/backend-deployment.yml /n
+kubectl apply -f k8s/backend/backend-service.yml /n
+kubectl apply -f k8s/backend/backend-config.yml /n
 Frontend:
 
 Deploy the frontend using the deployment and service files:
 bash
 Copy
 Edit
-kubectl apply -f k8s/frontend/frontend-deployment.yml
-kubectl apply -f k8s/frontend/frontend-service.yml
+kubectl apply -f k8s/frontend/frontend-deployment.yml /n
+kubectl apply -f k8s/frontend/frontend-service.yml /n
 Pipeline Workflow
 The Jenkins pipeline automates the process of building Docker images and deploying them to Kubernetes. Here’s the high-level overview of the pipeline:
 
@@ -107,30 +107,30 @@ Build Docker Images:
 bash
 Copy
 Edit
-docker build -t <docker-hub-repo-backend> ./backend
-docker build -t <docker-hub-repo-frontend> ./frontend
-docker build -t <docker-hub-repo-mongo> ./mongo
+docker build -t <docker-hub-repo-backend> ./backend /n
+docker build -t <docker-hub-repo-frontend> ./frontend /n
+docker build -t <docker-hub-repo-mongo> ./mongo /n
 Push Images to Docker Hub:
 
 bash
 Copy
 Edit
-docker push <docker-hub-repo-backend>
-docker push <docker-hub-repo-frontend>
-docker push <docker-hub-repo-mongo>
+docker push <docker-hub-repo-backend> /n
+docker push <docker-hub-repo-frontend> /n
+docker push <docker-hub-repo-mongo> /n
 Apply Kubernetes Manifests:
 
 bash
 Copy
 Edit
-kubectl apply -f k8s/namespace.yml
-kubectl apply -f k8s/mongo/mongo-deployment.yml
-kubectl apply -f k8s/mongo/mongo-service.yml
-kubectl apply -f k8s/backend/backend-deployment.yml
-kubectl apply -f k8s/backend/backend-service.yml
-kubectl apply -f k8s/backend/backend-config.yml
-kubectl apply -f k8s/frontend/frontend-deployment.yml
-kubectl apply -f k8s/frontend/frontend-service.yml
+kubectl apply -f k8s/namespace.yml /n
+kubectl apply -f k8s/mongo/mongo-deployment.yml /n
+kubectl apply -f k8s/mongo/mongo-service.yml /n
+kubectl apply -f k8s/backend/backend-deployment.yml /n
+kubectl apply -f k8s/backend/backend-service.yml /n
+kubectl apply -f k8s/backend/backend-config.yml /n
+kubectl apply -f k8s/frontend/frontend-deployment.yml /n
+kubectl apply -f k8s/frontend/frontend-service.yml /n
 Access the Application:
 
 Use kubectl port-forward or minikube service to expose the frontend service.
